@@ -4,6 +4,10 @@ venv/
 .venv
 .venv/
 
+.vscode
+vscode/
+.vscode/
+
 __pycache__/
 *.py[cod]
 
@@ -19,5 +23,7 @@ __pycache__/
 static/
 posts/static/
 media/
+
+practice.py
 
 db.sqlite3
