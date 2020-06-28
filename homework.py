@@ -22,8 +22,18 @@ def get_status(user_id):
         'user_ids': user_id,
         'fields': 'online',
     }
-    user_status = requests.post(
-        f'{url}method/users.get', params=params)
+    try:
+        user_status = requests.post(
+            f'{url}method/users.get', params=params)
+    except requests.exceptions.HTTPError as errh:
+        print("Http Error:", errh)
+    except requests.exceptions.ConnectionError as errc:
+        print("Connection is failed:", errc)
+    except requests.exceptions.Timeout as errt:
+        print("Timeout Error:", errt)
+    except requests.exceptions.RequestException as err:
+        print("Something Else", err)
+
     return user_status.json()['response'][0]['online']
 
 
